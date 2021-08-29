@@ -28,4 +28,4 @@ class Storage implements StorageInterface {
     }
 }
 
-export default new Storage();
+export default Storage;

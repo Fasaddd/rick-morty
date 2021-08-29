@@ -6,8 +6,8 @@ export interface ApiClientConfig {
 }
 
 export interface StorageInterface {
-    set(key: string, value: any, raw ?: boolean): void;
-    get(key: string, default_value: any, raw?: boolean): any;
+    set(key: string, value: any): void;
+    get(key: string, default_value: any): any;
     has(key: string): boolean;
     remove(key: string): void
 }

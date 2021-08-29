@@ -7,17 +7,20 @@ import {ApiService} from './service';
 export default class ApiClient {
 
     public readonly httpClient: HttpClientInterface;
-    private readonly storage: StorageInterface;
+
+    //
+    public readonly storage: StorageInterface;
+    public readonly character: CharacterService;
 
     private readonly config: ApiClientConfig;
 
-    public readonly character: CharacterService;
 
     /**
      * @param config
      * @param storageManager
      */
     public constructor(config: ApiClientConfig, storageManager: StorageInterface) {
+
         this.httpClient = axios.create({
             baseURL: config.baseUrl,
             responseType: "json",
