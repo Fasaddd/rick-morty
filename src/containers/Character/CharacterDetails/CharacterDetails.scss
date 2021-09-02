@@ -20,6 +20,7 @@
       .item-description {
         font-size: 16px;
         margin: 10px 0;
+        flex-basis: 65%;
 
         &.unknown {
           color: $details-item-unknown-color;
