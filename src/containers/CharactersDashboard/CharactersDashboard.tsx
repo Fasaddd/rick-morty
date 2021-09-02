@@ -11,7 +11,7 @@ import {ACTIVE_CHARACTER_ID_KEY} from '../../adapters/constants';
 const CharactersDashboard: FC = (): ReactElement => {
 
     const {state, dispatch} = useCharacterState();
-    const {activeCharacter, loading} = state;
+    const {activeCharacter, loading, error} = state;
 
     const getStoredItem = (itemId: number) => {
         return storageService.getCharacterListItem(itemId);
@@ -59,7 +59,7 @@ const CharactersDashboard: FC = (): ReactElement => {
                 {
                     isShowCharacter
                         ? <Character character={activeCharacter}/>
-                        : <EmptyCharacter loading={loading}/>
+                        : <EmptyCharacter error={error} loading={loading}/>
                 }
             </div>
         </div>

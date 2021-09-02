@@ -1,7 +1,7 @@
 import Api from '../adapters/api';
 import {CharacterType} from '../adapters/types';
 
-const CHARACTERS_LIST_KEY = 'character-list-key';
+const CHARACTERS_LIST_KEY = 'characters-list-key';
 
 class StorageService {
 

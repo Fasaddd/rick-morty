@@ -38,7 +38,10 @@ const SearchInput: FC<Props> = ({defaultValue = '', onFormSubmit, loading}): Rea
     useEffect(() => {
         if (!!defaultValue && defaultValue?.trim().length > 0) {
             setSearchValue(defaultValue);
-            handleSubmit();
+            const isCachedValue = storageService.getCharacterListItem(parseInt(defaultValue));
+            if (isCachedValue) {
+                handleSubmit();
+            }
         }
     }, [defaultValue]);
 

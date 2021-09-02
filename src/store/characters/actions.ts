@@ -13,6 +13,8 @@ export const SET_ACTIVE_CHARACTER = 'SET_ACTIVE_CHARACTER';
 export const SET_ALL_CHARACTERS = 'SET_ALL_CHARACTERS';
 
 
+export const CHARACTER_NOT_FOUND = 'Character not found';
+
 export const getCharacterById = (id: number) => {
     return async (dispatch: Dispatch<{ type: string, payload?: CharacterType | CharacterType[], error?: any }>) => {
         dispatch({type: GET_CHARACTER_BY_ID_REQUESTED});
@@ -22,7 +24,11 @@ export const getCharacterById = (id: number) => {
             const allCharacters = storageService.addCharacterItem(data);
             dispatch({type: SET_ALL_CHARACTERS, payload: allCharacters});
             dispatch({type: GET_CHARACTER_BY_ID_SUCCESS, payload: data});
-        } catch (error) {
+        } catch (error: any) {
+            if (error?.response?.data?.error) {
+                dispatch({type: GET_CHARACTER_BY_ID_FAILED, error: error.response.data.error});
+                return;
+            }
             dispatch({type: GET_CHARACTER_BY_ID_FAILED, error});
         }
     }
