@@ -3,9 +3,9 @@ import Storage from "./storage";
 import HttpStatus from "http-status-codes";
 
 const Api: ApiClient = new ApiClient({
-        baseUrl: process.env.BACKEND_URL,
+        baseUrl: process.env.REACT_APP_BACKEND_URL ?? '',
         onError: (error: any): Promise<any> => {
-            // global error handler for all requests
+            // characters error handler for all requests
             if (error.response?.status === HttpStatus.INTERNAL_SERVER_ERROR) {
                 alert('Message about internal server error');
             }

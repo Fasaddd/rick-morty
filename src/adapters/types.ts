@@ -1,5 +1,5 @@
 //#region Character
-export type Character = {
+export type CharacterType = {
   id: number;
   created: string;
   image: string;
@@ -10,13 +10,29 @@ export type Character = {
   type: string;
   url: string;
   episode: string[];
-  origin: CharacterOrigin;
-  location: CharacterLocation;
+  origin: CharacterOriginType;
+  location: CharacterLocationType;
 };
-type CharacterOrigin = {
+export type CharacterOriginType = {
   name: string;
   url: string;
 }
-type CharacterLocation = CharacterOrigin;
+export type CharacterLocationType = CharacterOriginType;
+
+export enum CharacterDisplayedDetails {
+  SPECIES = 'species',
+  TYPE = 'type',
+  LOCATION = 'location',
+  ORIGIN = 'origin',
+  STATUS = 'status'
+}
+export enum CharacterUnknownDetails {
+  UNKNOWN = 'unknown',
+  EMPTY = ''
+}
+export enum CharacterStatuses {
+  ALIVE = 'Alive',
+  DEAD = 'Dead'
+}
 
 //#endregion Character

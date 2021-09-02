@@ -31,20 +31,6 @@ export class ApiService implements ApiServiceInterface {
         return querystring.stringify(params);
     }
 
-    /**
-     * Convert JS Object to form data
-     * @param params
-     */
-    protected toFormData(params: any): FormData {
-        let formData = new FormData();
-
-        for (let key in params) {
-            formData.append(key, params[key]);
-        }
-
-        return formData;
-    }
-
     protected formatUrl(url: string, id: any): string {
         if (typeof id !== 'object') {
             if (url.indexOf("{id}") > 0) {

@@ -1,5 +1,5 @@
-import {useContext, useMemo} from 'react';
-import {DispatchContext, StoreContext} from '../characters/reducer';
+import {useContext} from 'react';
+import {DispatchContext, StoreContext} from './reducer';
 
 const useCharacterState = () => {
     const _dispatch = useContext(DispatchContext);
@@ -9,9 +9,7 @@ const useCharacterState = () => {
         action(_dispatch);
     }
 
-    return useMemo(() => {
         return {state, dispatch};
-    }, [state, dispatch]);
 }
 
 export {useCharacterState};
