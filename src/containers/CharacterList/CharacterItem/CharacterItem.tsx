@@ -1,4 +1,4 @@
-import React, {FC, ReactElement, ReactEventHandler, useCallback, useMemo} from 'react';
+import React, {FC, ReactElement, useMemo} from 'react';
 import {CharacterType} from '../../../adapters/types';
 import './CharacterItem.scss';
 import {BsFillXSquareFill} from 'react-icons/all';
@@ -19,7 +19,7 @@ const CharacterItem: FC<Props> = ({
                                       handleRemoveCharacter
                                   }): ReactElement => {
 
-    const removeItem = (event: Event) => {
+    const removeItem = (event: any) => {
         event.stopPropagation();
         handleRemoveCharacter();
     }
@@ -32,9 +32,11 @@ const CharacterItem: FC<Props> = ({
 
     return (
         <div className={getItemClasses} onClick={handleChooseCharacter}>
-            <BsFillXSquareFill
-                onClick={handleRemoveCharacter}
-                className="remove-icon"/>
+            <div className="remove-icon">
+                <BsFillXSquareFill
+                    onClick={removeItem}
+                />
+            </div>
             <img src={character?.image} className="character-image" alt="character-image"/>
         </div>
     )
