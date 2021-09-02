@@ -1,20 +1,22 @@
-import React, {createContext, FC, ReactNode, useReducer} from 'react';
+import React, {createContext, FC, ReactNode, useMemo, useReducer} from 'react';
 import {
     GET_CHARACTER_BY_ID_FAILED,
     GET_CHARACTER_BY_ID_REQUESTED,
-    GET_CHARACTER_BY_ID_SUCCESS
+    GET_CHARACTER_BY_ID_SUCCESS, SET_ACTIVE_CHARACTER, SET_ALL_CHARACTERS
 } from './actions';
-import {Character} from '../../adapters/types';
+import {CharacterType} from '../../adapters/types';
 
 
 export type CharactersStateType = {
     loading: boolean;
-    characters: Character[],
+    activeCharacter: CharacterType | null;
+    characters: CharacterType[],
     error: any,
 }
 
 const initialState: CharactersStateType = {
     loading: false,
+    activeCharacter: null,
     characters: [],
     error: null,
 };
@@ -38,6 +40,7 @@ const StateProvider: FC<Props> = ({children}) => {
                 return {
                     ...state,
                     loading: false,
+                    activeCharacter: null,
                     error: action.error
                 }
             case GET_CHARACTER_BY_ID_SUCCESS:
@@ -45,7 +48,17 @@ const StateProvider: FC<Props> = ({children}) => {
                     ...state,
                     loading: false,
                     error: null,
-                    characters: action.payload
+                    activeCharacter: action.payload,
+                }
+            case SET_ACTIVE_CHARACTER:
+                return {
+                    ...state,
+                    activeCharacter: action.payload
+                }
+            case SET_ALL_CHARACTERS:
+                return {
+                    ...state,
+                    characters: [...action.payload]
                 }
             default:
                 return state;
@@ -53,10 +66,13 @@ const StateProvider: FC<Props> = ({children}) => {
 
     }, initialState);
 
+    const dispatchContext = useMemo(() => dispatch, [dispatch]);
+    const stateContext = useMemo(() => state, [state]);
+
     return (
         <>
-            <DispatchContext.Provider value={dispatch}>
-                <StoreContext.Provider value={state}>
+            <DispatchContext.Provider value={dispatchContext}>
+                <StoreContext.Provider value={stateContext}>
                     {children}
                 </StoreContext.Provider>
             </DispatchContext.Provider>
