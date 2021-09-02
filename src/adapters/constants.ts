@@ -1,0 +1,1 @@
+export const ACTIVE_CHARACTER_ID_KEY = 'active-character-id-key';

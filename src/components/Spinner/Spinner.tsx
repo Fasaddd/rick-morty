@@ -1,12 +1,22 @@
 import React, {FC, ReactElement} from 'react';
+import './Spinner.scss';
 
-type Props = {
-    loading: boolean;
-}
-
-const Spinner: FC<Props> = ({loading}): ReactElement => {
+const Spinner: FC = (): ReactElement => {
     return (
-        <div className="spinner"/>
+        <div className="lds-spinner">
+            <div/>
+            <div/>
+            <div/>
+            <div/>
+            <div/>
+            <div/>
+            <div/>
+            <div/>
+            <div/>
+            <div/>
+            <div/>
+            <div/>
+        </div>
     )
 }
 

@@ -1,0 +1,12 @@
+.main-section {
+  display: flex;
+  justify-content: space-between;
+  .character-dashboard {
+    margin: 10px;
+    flex: 0 0 calc(65% - 10px);
+  }
+  .character-list {
+    margin: 10px;
+    flex: 0 0 calc(35% - 10px);
+  }
+}

@@ -1,0 +1,33 @@
+@import "../../style/_variables.scss";
+
+.search {
+  width: 300px;
+  text-align: right;
+  position: relative;
+  border-bottom: 1px solid $black;
+
+  &-input {
+    background: none;
+    border: none;
+    outline: none;
+    width: 250px;
+    z-index: 1;
+    font-size: $search-font-size;
+    font-style: italic;
+    padding-right: 50px;
+  }
+
+  &-submit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    outline: none;
+    font-style: italic;
+    font-size: $search-font-size;
+    background-color: transparent;
+    color: $search-submit-color;
+    z-index: 2;
+    cursor: pointer;
+  }
+}

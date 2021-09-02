@@ -1,0 +1,19 @@
+@import "../../style/_variables.scss";
+
+.empty {
+  &-loader {
+    justify-content: center;
+    align-items: center;
+    width: 237px;
+    height: 235px;
+  }
+  &-img {
+    width: 250px;
+    border-radius: 8px;
+    margin-right: 20px;
+  }
+  &-error {
+    display: flex;
+    color: $error-status;
+  }
+}

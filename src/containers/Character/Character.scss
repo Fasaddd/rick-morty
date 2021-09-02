@@ -1,0 +1,9 @@
+.character {
+  display: flex;
+  flex-wrap: wrap;
+  &-image {
+    width: 250px;
+    border-radius: 8px;
+    margin-right: 30px;
+  }
+}
