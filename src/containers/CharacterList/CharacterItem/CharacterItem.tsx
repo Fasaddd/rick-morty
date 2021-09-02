@@ -32,11 +32,10 @@ const CharacterItem: FC<Props> = ({
 
     return (
         <div className={getItemClasses} onClick={handleChooseCharacter}>
-            <div className="remove-icon">
                 <BsFillXSquareFill
+                    className="remove-icon"
                     onClick={removeItem}
                 />
-            </div>
             <img src={character?.image} className="character-image" alt="character-image"/>
         </div>
     )
